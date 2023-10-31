@@ -151,20 +151,16 @@ public final class Tokenizer {
         assert in.isOpen() : "Violation of: in.is_open";
 
         // TODO - fill in body
-        SimpleWriter out = new SimpleWriter1L();
         Queue<String> tokens = new Queue1L<String>();
         String nextLine = "";
         String nextWord = "";
         int pos = 0;
         while (!in.atEOS()) {
-            out.println(1);
             pos = 0;
             nextLine = in.nextLine();
             while (pos < nextLine.length()) {
 
                 nextWord = nextWordOrSeparator(nextLine, pos);
-                out.println(nextLine.length() + "   :   " + pos);
-                out.println(nextLine);
                 pos += nextWord.length();
                 if (!(SEPARATORS
                         .contains(String.valueOf(nextWord.charAt(0))))) {
@@ -194,9 +190,8 @@ public final class Tokenizer {
         /*
          * Get input file name
          */
-        //out.print("Enter input file name: ");
-        //String fileName = in.nextLine();
-        String fileName = "data/SampleProgram.bl";
+        out.print("Enter input file name: ");
+        String fileName = in.nextLine();
 
         /*
          * Tokenize input with Tokenizer implementation from library.
